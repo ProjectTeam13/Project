@@ -10,12 +10,13 @@ package Mallfunction;
  * @author ChristianS
  */
 import javax.swing.*;
+
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 
 class Vindu extends JFrame implements ActionListener{
-    JPanel jp = new JPanel();
+	JPanel jp = new JPanel();
 	JLabel jl = new JLabel();
 	JRadioButton r0 = new JRadioButton("Svalbard");
 	JRadioButton r1 = new JRadioButton("Finnmark");
@@ -41,13 +42,15 @@ class Vindu extends JFrame implements ActionListener{
 	JButton b1 = new JButton("Next");
 	JTabbedPane fane = new JTabbedPane();
 	ButtonGroup g = new ButtonGroup();
-	ButtonGroup g1 = new ButtonGroup();
 	
+	ButtonGroup g1 = new ButtonGroup();
 	JPanel jp1 = new JPanel();
 	JRadioButton rb11 = new JRadioButton("Frequently asked questions");
 	JRadioButton rb12 = new JRadioButton("Ask coustomer service");
 	JTextField t11 = new JTextField(30);
 	JTextArea t12 = new JTextArea(200,100);
+	String text = "Where is the coustomer service located";
+	JRadioButton rb110 = new JRadioButton(text);
 	
 	Centre[] c = new Centre[15];
 	ArrayList<Centre> c1 = new ArrayList<>();
@@ -62,33 +65,15 @@ class Vindu extends JFrame implements ActionListener{
 	JButton b21 = new JButton("Login");
 	JButton b22 = new JButton("New User");
 	
-	JPanel jp3 = new JPanel();
-	JLabel jl3 = new JLabel("Login requierd");
-	JLabel jl31 = new JLabel("Username");
-	JLabel jl32 = new JLabel("Password");
-	JTextField t31 = new JTextField(15);
-	JTextField t32 = new JPasswordField(15);
-	JButton b31 = new JButton("Login");
-	JButton b32 = new JButton("New User");
-	
-	JPanel jp4 = new JPanel();
-	JLabel jl4 = new JLabel("Login requierd");
-	JLabel jl41 = new JLabel("Username");
-	JLabel jl42 = new JLabel("Password");
-	JTextField t41 = new JTextField(15);
-	JPasswordField t42 = new JPasswordField(15);
-	JButton b41 = new JButton("Login");
-	JButton b42 = new JButton("New User");	
-	
 	
 	JLabel tekst = new JLabel("");
 	JPanel RP = new JPanel(new GridLayout(0, 1));
 	public Vindu(){
-		setTitle("Shoppingcentres");
+		setTitle("Malfunction Software System");
 		setVisible(true);
 		setSize(700, 625);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jl.setIcon(new ImageIcon("C:\\Users\\Christian\\Documents\\eclipse\\GUI\\src\\img\\fylker3.jpg"));
+		jl.setIcon(new ImageIcon("src\\img\\fylker3.jpg"));
 		jp.add(jl, BorderLayout.EAST);
 		fane.add("User", jp);
 		add(fane, BorderLayout.NORTH);	
@@ -141,10 +126,12 @@ class Vindu extends JFrame implements ActionListener{
 		rb11.setSelected(true);
 		jp1.setLayout(null);
 		rb11.setBounds(100, 25, 200, 20);
+		rb110.setBounds(125, 45, 500, 20);
 		rb12.setBounds(100, 100, 200, 20);
 		t11.setBounds(100, 130, 200, 20);
-		t12.setLocation(100, 150);
+		t12.setBounds(100, 160, 300, 250);
 		jp1.add(rb11);
+		jp1.add(rb110);
 		jp1.add(rb12);
 		g1.add(rb11);
 		g1.add(rb12);
@@ -153,7 +140,7 @@ class Vindu extends JFrame implements ActionListener{
 		
 		g1.clearSelection();
 		
-		fane.add("Centre-admin", jp2);
+		fane.add("Administration login", jp2);
 		jp2.setLayout(null);
 		jl2.setBounds(200, 25, 200, 50);
 		jl21.setBounds(200, 75, 150, 20);
@@ -173,40 +160,6 @@ class Vindu extends JFrame implements ActionListener{
 		jp2.add(b21);
 		jp2.add(b22);
 		
-		fane.add("Shop-admin", jp3);
-		jp3.setLayout(null);
-		jl3.setBounds(200, 25, 200, 50);
-		jl31.setBounds(200, 75, 150, 20);
-		t31.setBounds(200, 100, 175, 20);
-		jl32.setBounds(200, 125, 150, 20);
-		t32.setBounds(200, 150, 175, 20);
-		b31.setBounds(200, 185, 75, 20);
-		b32.setBounds(280, 185, 100, 20);
-		jp3.add(t31);
-		jp3.add(t32);
-		jp3.add(jl3);
-		jp3.add(jl31);
-		jp3.add(jl32);
-		jp3.add(b31);
-		jp3.add(b32);
-		
-		fane.add("Service sentre", jp4);
-		jp4.setLayout(null);
-		jl4.setBounds(200, 25, 200, 50);
-		jl41.setBounds(200, 75, 150, 20);
-		t41.setBounds(200, 100, 175, 20);
-		jl42.setBounds(200, 125, 150, 20);
-		t42.setBounds(200, 150, 175, 20);
-		b41.setBounds(200, 185, 75, 20);
-		b42.setBounds(280, 185, 100, 20);
-		jp4.add(t41);
-		jp4.add(t42);
-		jp4.add(jl4);
-		jp4.add(jl41);
-		jp4.add(jl42);
-		jp4.add(b41);
-		jp4.add(b42);
-		
 		g.clearSelection();	
 		b21.addActionListener(this);
 		b1.addActionListener(this);
@@ -222,10 +175,8 @@ class Vindu extends JFrame implements ActionListener{
 		char[] p2 = {'a', 'b'};
 		c1.add(0, new Centre(u,p));
 		c1.add(1, new Centre(u2,p2));
-		/*for(int i = 0; i<c1.size(); i++){
-			uname.set(i, (c1.get(i).getUsername()));
-		}*/
 		
+		rb11.setSelected(true);
 		t11.setEditable(false);
 		t12.setEditable(false);
 		if(e.getSource() == b1){
@@ -294,6 +245,7 @@ class Vindu extends JFrame implements ActionListener{
 			
 		}
 		if(e.getSource() == rb12){
+			
 			t11.setEditable(true);
 			t12.setEditable(true);
 		}
@@ -340,8 +292,9 @@ class Vindu extends JFrame implements ActionListener{
 	}
 }
 
-class Test1 {
-    public static void main(String[] args){
-        Vindu etVindu = new Vindu();
-    }
+class Test1{	
+	public static void main(String[] args){
+		Vindu etVindu = new Vindu();
+	}
 }
+
