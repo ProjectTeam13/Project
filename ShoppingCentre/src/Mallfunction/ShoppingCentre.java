@@ -9,5 +9,7 @@ public class ShoppingCentre {
         System.out.println("hei");
        // dette er endring
         // dette er enda en endring
+        // tredje endring
+         //dette er en endring til
     }
 }
